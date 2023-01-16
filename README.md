@@ -1,4 +1,4 @@
-# 📄 nuxt-pdf-export
+# 📄 nuxt-pdf
 
 ## Development
 

@@ -1,11 +1,11 @@
 import { defineNuxtConfig } from 'nuxt/config'
-import MyModule from '..'
+import nuxtPdf from '..'
 
 export default defineNuxtConfig({
   modules: [
-    MyModule
+    nuxtPdf
   ],
-  myModule: {
+  nuxtPdf: {
     addPlugin: true
   }
 })
