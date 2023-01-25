@@ -20,12 +20,12 @@ import { useNuxtApp } from '#app'
 import { ref } from 'vue'
 import { Html2PdfOptions } from '../src/runtime/plugin.client'
 
-const { $html2pdf } = useNuxtApp()
+const { $exportToPDF } = useNuxtApp()
 
 const page = ref<HTMLElement | null>(null)
 const pdfSection = ref<HTMLElement | null>(null)
 
 const print = async (element: HTMLElement, options: Html2PdfOptions) => {
-  await $html2pdf(element, options)
+  await $exportToPDF(element, options)
 }
 </script>

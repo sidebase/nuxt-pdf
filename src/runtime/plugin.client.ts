@@ -1,5 +1,5 @@
-// @ts-expect-error html2pdf doesn't have type definitions, adding them here for now
 import { defineNuxtPlugin } from '#app'
+// @ts-expect-error html2pdf doesn't have type definitions, adding them here for now
 import html2pdf from 'html2pdf.js'
 
 export interface HTML2CanvasOptions {
@@ -54,7 +54,7 @@ export interface Html2PdfOptions {
 export default defineNuxtPlugin(() => {
   return {
     provide: {
-      html2pdf: (element: HTMLElement, options: Html2PdfOptions) => {
+      exportToPDF: (element: HTMLElement, options: Html2PdfOptions) => {
         return html2pdf(element, options)
       }
     }
