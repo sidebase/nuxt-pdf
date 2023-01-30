@@ -18,7 +18,12 @@
     "prepack": "nuxt-module-build",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
+    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
+    "lint": "eslint . --max-warnings=0",
+    "types": "tsc --noEmit",
+    "build:module": "nuxi build",
+    "build:playground": "nuxi build playground",
+    "start:playground": "node playground/.output/server/index.mjs"
   },
   "dependencies": {
     "@nuxt/kit": "^3.0.0",

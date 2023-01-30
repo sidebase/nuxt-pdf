@@ -4,8 +4,5 @@ import nuxtPdf from '..'
 export default defineNuxtConfig({
   modules: [
     nuxtPdf
-  ],
-  nuxtPdf: {
-    addPlugin: true
-  }
+  ]
 })

@@ -1,11 +1,7 @@
 import { fileURLToPath } from 'url'
 import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
 
-export interface ModuleOptions {
-  addPlugin: boolean | number
-}
-
-export default defineNuxtModule<ModuleOptions>({
+export default defineNuxtModule({
   meta: {
     name: 'nuxt-pdf',
     configKey: 'nuxtPdf'
