@@ -18,7 +18,7 @@
 <script setup lang="ts">
 import { useNuxtApp } from '#app'
 import { ref } from 'vue'
-import { Html2PdfOptions } from '../src/runtime/plugin.client'
+import { Html2PdfOptions } from '../../src/runtime/plugin.client'
 
 const { $exportToPDF } = useNuxtApp()
 
