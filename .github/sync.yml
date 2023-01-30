@@ -1,0 +1,8 @@
+sidebase/nuxt-pdf:
+  - docs/content
+  - docs/public
+sidebase/docs:
+  - source: docs/content/
+    dest: content/6.nuxt-pdf/
+  - source: docs/public/
+    dest: public/
