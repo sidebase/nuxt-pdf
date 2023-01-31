@@ -54,7 +54,14 @@ export interface Html2PdfOptions {
 export default defineNuxtPlugin(() => {
   return {
     provide: {
-      exportToPDF: (element: HTMLElement, options?: Html2PdfOptions) => html2pdf(element, options)
+      exportToPDF: (element: HTMLElement | null, options?: Html2PdfOptions) => {
+        if (!element) {
+          // eslint-disable-next-line no-console
+          console.error('Tried to print while `element` was `null`. Did you pass a fully mounted element?')
+          return
+        }
+        return html2pdf(element, options)
+      }
     }
   }
 })

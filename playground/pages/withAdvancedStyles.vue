@@ -8,7 +8,7 @@
         Thanks for testing out nuxt-pdf!
       </div>
     </div>
-    <button @click="print(pdfSection, {})">
+    <button @click="print(pdfSection)">
       print card
     </button>
   </div>
@@ -16,17 +16,23 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Html2PdfOptions } from '../../src/runtime/plugin.client'
-import { usePDFExport } from '#imports'
+import { useNuxtApp } from '#app'
+
+const { $exportToPDF } = useNuxtApp()
 
 const pdfSection = ref<HTMLElement | null>(null)
 const isExporting = ref(false)
 
-const print = async (element: HTMLElement, options: Html2PdfOptions) => {
-  pdfSection.value?.classList.add('print')
+const print = async (element: HTMLElement | null, options?: Parameters<typeof $exportToPDF>[1]) => {
+  if (!element) {
+    return
+  }
   isExporting.value = true
-  await usePDFExport(element, options)
-  pdfSection.value?.classList.remove('print')
+
+  element.classList.add('print')
+  await $exportToPDF(element, options)
+  element.classList.remove('print')
+
   isExporting.value = false
 }
 </script>
