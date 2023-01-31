@@ -1,5 +1,5 @@
 {
-  "name": "@sidebase/nuxt-pdf-export",
+  "name": "@sidebase/nuxt-pdf",
   "version": "1.0.0",
   "license": "MIT",
   "type": "module",
@@ -18,10 +18,16 @@
     "prepack": "nuxt-module-build",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
+    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
+    "lint": "eslint . --max-warnings=0",
+    "types": "tsc --noEmit",
+    "build:module": "nuxi build",
+    "build:playground": "nuxi build playground",
+    "start:playground": "node playground/.output/server/index.mjs"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0"
+    "@nuxt/kit": "^3.0.0",
+    "html2pdf.js": "^0.10.1"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^0.2.1",

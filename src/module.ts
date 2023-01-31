@@ -1,24 +1,20 @@
 import { fileURLToPath } from 'url'
-import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, createResolver, addImportsDir } from '@nuxt/kit'
 
-export interface ModuleOptions {
-  addPlugin: boolean
-}
-
-export default defineNuxtModule<ModuleOptions>({
+export default defineNuxtModule({
   meta: {
-    name: 'my-module',
-    configKey: 'myModule'
-  },
-  defaults: {
-    addPlugin: true
+    name: 'nuxt-pdf',
+    configKey: 'nuxtPdf'
   },
   setup (options, nuxt) {
-    if (options.addPlugin) {
-      const { resolve } = createResolver(import.meta.url)
-      const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
-      nuxt.options.build.transpile.push(runtimeDir)
-      addPlugin(resolve(runtimeDir, 'plugin'))
-    }
+    // @ts-ignore
+    const { resolve } = createResolver(import.meta.url)
+    // @ts-ignore
+    const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
+    nuxt.options.build.transpile.push(runtimeDir)
+    addPlugin(resolve(runtimeDir, 'plugin.client'))
+
+    const composables = resolve('./runtime/composables')
+    addImportsDir(composables)
   }
 })
