@@ -7,6 +7,9 @@ export default defineNuxtModule({
   },
   setup () {
     const { resolve } = createResolver(import.meta.url)
-    addPlugin(resolve('./runtime/plugin.client'))
+    addPlugin({
+      src: resolve('./runtime/plugin'),
+      mode: 'client'
+    })
   }
 })
