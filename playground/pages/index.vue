@@ -16,16 +16,14 @@
 </template>
 
 <script setup lang="ts">
-import { useNuxtApp } from '#app'
 import { ref } from 'vue'
 import { Html2PdfOptions } from '../../src/runtime/plugin.client'
-
-const { $exportToPDF } = useNuxtApp()
+import { usePDFExport } from '#imports'
 
 const page = ref<HTMLElement | null>(null)
 const pdfSection = ref<HTMLElement | null>(null)
 
 const print = async (element: HTMLElement, options: Html2PdfOptions) => {
-  await $exportToPDF(element, options)
+  await usePDFExport(element, options)
 }
 </script>

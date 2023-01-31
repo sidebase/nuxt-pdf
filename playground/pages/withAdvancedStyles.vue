@@ -15,11 +15,9 @@
 </template>
 
 <script setup lang="ts">
-import { useNuxtApp } from '#app'
 import { ref } from 'vue'
 import { Html2PdfOptions } from '../../src/runtime/plugin.client'
-
-const { $exportToPDF } = useNuxtApp()
+import { usePDFExport } from '#imports'
 
 const pdfSection = ref<HTMLElement | null>(null)
 const isExporting = ref(false)
@@ -27,7 +25,7 @@ const isExporting = ref(false)
 const print = async (element: HTMLElement, options: Html2PdfOptions) => {
   pdfSection.value?.classList.add('print')
   isExporting.value = true
-  await $exportToPDF(element, options)
+  await usePDFExport(element, options)
   pdfSection.value?.classList.remove('print')
   isExporting.value = false
 }
