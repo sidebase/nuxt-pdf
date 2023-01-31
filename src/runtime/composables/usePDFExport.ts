@@ -50,4 +50,9 @@ export interface Html2PdfOptions {
   jsPDF?: JsPdfOptions
 }
 
-export const usePDFExport = (element: HTMLElement, options?: Html2PdfOptions) => html2pdf(element, options)
+export const usePDFExport = (element: HTMLElement, options?: Html2PdfOptions) => {
+  // html2pdf uses a define-and-call on import that relies on `self` being defined. To ensure this, we bind `this` here
+  const html2pdfWithSelfBound = html2pdf.bind(this)
+
+  return html2pdfWithSelfBound(element, options)
+}
