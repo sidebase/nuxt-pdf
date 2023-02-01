@@ -2,7 +2,7 @@
   <div>
     <button
       style="border-radius: 0; font-size: 20px; position: fixed; cursor: pointer"
-      @click="usePDFExport(pdfSection, undefined, {html2canvas: {scale: 0.7, useCORS: true}})"
+      @click="print(pdfSection)"
     >
       Generate PDF
     </button>
@@ -16,13 +16,30 @@
 import { ref } from 'vue'
 import { usePDFExport } from '#imports'
 
-const pdfSection = ref<HTMLElement | null>(null)
+const pdfSection = ref<HTMLElement | undefined>(undefined)
+
+const print = (HTMLElement: HTMLElement | undefined) => {
+  usePDFExport(HTMLElement,
+    {
+      encryption: {
+        ownerPassword: 'test',
+        userPassword: 'test2',
+        userPermissions: ['print']
+      }
+    }, {
+      html2canvas: {
+        scale: 0.7,
+        useCORS: true
+      }
+    })
+}
 </script>
 
 <style>
 html {
   padding: 0
 }
+
 body {
   padding: 0;
   margin: 0;
