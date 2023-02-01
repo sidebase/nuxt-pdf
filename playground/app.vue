@@ -7,7 +7,7 @@
       >
         Generate normal PDF
       </button>
-      <br></br>
+      <br>
       <button
         style="border-radius: 0; font-size: 20px; cursor: pointer; margin-top: 10px"
         @click="printProtected(pdfSection)"
