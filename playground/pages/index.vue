@@ -2,7 +2,7 @@
   <div>
     <button
       style="border-radius: 0; font-size: 20px; position: fixed; cursor: pointer"
-      @click="$exportToPDF(pdfSection, {html2canvas: {scale: 0.7}})"
+      @click="usePDFExport(pdfSection, {html2canvas: {scale: 0.7}})"
     >
       Generate PDF
     </button>
@@ -14,8 +14,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useNuxtApp } from '#app'
-const { $exportToPDF } = useNuxtApp()
+import { usePDFExport } from '#imports'
 
 const pdfSection = ref<HTMLElement | null>(null)
 </script>
