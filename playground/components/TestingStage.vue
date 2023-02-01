@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h1>nuxt-pdf</h1>
+    <h1>nuxt-pdf by <a href="https://sidebase.io" target="_blank">sidebase</a></h1>
     <p>
-      This demo uses nuxt-pdf to render HTML. <br>Instead of using an HTML canvas however, a canvas
-      wrapper using jsPDF is substituted. The <em>context2d</em> provided by the wrapper calls native PDF
-      rendering methods.
+      This demo uses nuxt-pdf to render HTML. <br>
+      Instead of using an HTML canvas however, a canvas wrapper using jsPDF is substituted.
+      The <em>context2d</em> provided by the wrapper calls native PDF rendering methods.
     </p>
-    <p>A PDF of this page will be inserted into the right margin.</p>
+    <p>A PDF of this page can created by clicking the button above.</p>
 
     <h2>Colors</h2>
     <p>
@@ -58,6 +58,7 @@
     <div style="font-style: oblique">
       Oblique
     </div>
+    <br />
     <h2>Lists</h2>
     <ul>
       <li>apples</li>

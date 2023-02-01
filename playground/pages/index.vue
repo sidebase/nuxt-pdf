@@ -1,9 +1,12 @@
 <template>
   <div>
-    <button @click="print(pdfSection)">
-      print page
+    <button
+      style="border-radius: 0; font-size: 20px; position: fixed; cursor: pointer"
+      @click="$exportToPDF(pdfSection, {html2canvas: {scale: 0.7}})"
+    >
+      Generate PDF
     </button>
-    <div ref="pdfSection">
+    <div ref="pdfSection" style="width: 500px; margin: auto">
       <TestingStage />
     </div>
   </div>
@@ -15,10 +18,6 @@ import { useNuxtApp } from '#app'
 const { $exportToPDF } = useNuxtApp()
 
 const pdfSection = ref<HTMLElement | null>(null)
-
-const print = async (element: HTMLElement) => {
-  await $exportToPDF(element)
-}
 </script>
 
 <style>
