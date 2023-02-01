@@ -6,7 +6,8 @@
         @click="usePDFExport(pdfSection, undefined, {html2canvas: {scale: 0.7, useCORS: true}})"
       >
         Generate normal PDF
-      </button><br />
+      </button>
+      <br></br>
       <button
         style="border-radius: 0; font-size: 20px; cursor: pointer; margin-top: 10px"
         @click="printProtected(pdfSection)"
