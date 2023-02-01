@@ -3,7 +3,7 @@
     <div style="position: fixed">
       <button
         style="border-radius: 0; font-size: 20px; cursor: pointer"
-        @click="usePDFExport(pdfSection, undefined, {html2canvas: {scale: 0.7, useCORS: true}})"
+        @click="exportToPDF('pdf_export.pdf', pdfSection, undefined, {html2canvas: {scale: 0.7, useCORS: true}})"
       >
         Generate normal PDF
       </button>
@@ -23,12 +23,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { usePDFExport } from '#imports'
+import { exportToPDF } from '#imports'
 
 const pdfSection = ref<HTMLElement | null>(null)
 
 const printProtected = (HTMLElement: HTMLElement | undefined) => {
-  usePDFExport(HTMLElement,
+  exportToPDF('pdf_protected_export.pdf', HTMLElement,
     {
       encryption: {
         ownerPassword: 'test',
