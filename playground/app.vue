@@ -14,6 +14,13 @@
       >
         Generate protected PDF
       </button>
+      <br>
+      <button
+        style="border-radius: 0; font-size: 20px; cursor: pointer; margin-top: 10px"
+        @click="openInWindow(pdfSection)"
+      >
+        Generate custom PDF and open in window
+      </button>
     </div>
     <div ref="pdfSection" style="width: 500px; margin: auto">
       <TestingStage />
@@ -24,6 +31,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { exportToPDF } from '#imports'
+import { htmlToPdf } from '../src/runtime/composables/htmlToPdf';
 
 const pdfSection = ref<HTMLElement | null>(null)
 
@@ -41,6 +49,24 @@ const printProtected = (HTMLElement: HTMLElement | undefined) => {
         useCORS: true
       }
     })
+}
+
+const openInWindow = async (HTMLElement: HTMLElement) => {
+  const pdf = await htmlToPdf(HTMLElement,
+    {
+      html2canvas: {
+        scale: 0.7,
+        useCORS: true
+      }
+    })
+  const totalPages = pdf.getNumberOfPages()
+  const pdfHeight = pdf.getPageHeight()
+  await pdf.html('<b>I am a custom pdf!!!</b>', {
+    x: 20,
+    y: (pdfHeight - 50) * totalPages // place in the bottom
+  })
+  const blob = pdf.output('blob')
+  window.open(URL.createObjectURL(blob), '_blank')
 }
 </script>
 
