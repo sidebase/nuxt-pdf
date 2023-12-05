@@ -3,21 +3,21 @@
     <div style="position: fixed">
       <button
         style="border-radius: 0; font-size: 20px; cursor: pointer"
-        @click="exportToPDF('pdf_export.pdf', pdfSection, undefined, {html2canvas: {scale: 0.7, useCORS: true}})"
+        @click="exportToPDF('pdf_export.pdf', pdfSection as HTMLElement, undefined, {html2canvas: {scale: 0.7, useCORS: true}})"
       >
         Generate normal PDF
       </button>
       <br>
       <button
         style="border-radius: 0; font-size: 20px; cursor: pointer; margin-top: 10px"
-        @click="printProtected(pdfSection)"
+        @click="printProtected(pdfSection as HTMLElement)"
       >
         Generate protected PDF
       </button>
       <br>
       <button
         style="border-radius: 0; font-size: 20px; cursor: pointer; margin-top: 10px"
-        @click="openInWindow(pdfSection)"
+        @click="openInWindow(pdfSection as HTMLElement)"
       >
         Generate custom PDF and open in window
       </button>
@@ -30,12 +30,11 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { exportToPDF } from '#imports'
-import { htmlToPdf } from '../src/runtime/composables/htmlToPdf';
+import { exportToPDF, htmlToPdf } from '#imports'
 
 const pdfSection = ref<HTMLElement | null>(null)
 
-const printProtected = (HTMLElement: HTMLElement | undefined) => {
+const printProtected = (HTMLElement: HTMLElement) => {
   exportToPDF('pdf_protected_export.pdf', HTMLElement,
     {
       encryption: {
@@ -53,6 +52,7 @@ const printProtected = (HTMLElement: HTMLElement | undefined) => {
 
 const openInWindow = async (HTMLElement: HTMLElement) => {
   const pdf = await htmlToPdf(HTMLElement,
+    undefined,
     {
       html2canvas: {
         scale: 0.7,
