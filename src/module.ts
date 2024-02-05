@@ -1,4 +1,4 @@
-import { defineNuxtModule, createResolver, addImportsDir } from '@nuxt/kit'
+import { defineNuxtModule } from '@nuxt/kit'
 
 export default defineNuxtModule({
   meta: {
@@ -6,8 +6,6 @@ export default defineNuxtModule({
     configKey: 'pdf'
   },
   setup (options, nuxt) {
-    const { resolve } = createResolver(import.meta.url)
-    const composables = resolve('./runtime/composables')
-    addImportsDir(composables)
+    // Setup here
   }
 })
