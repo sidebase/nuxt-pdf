@@ -1,10 +1,7 @@
 import { createPDF, streamReturnPDF } from '#pdf'
 
 export default eventHandler((event) => {
-  const pdf = createPDF(    {
-    bufferPages: true,
-    size: 'A4',
-  })
+  const pdf = createPDF()
   pdf.text('test')
   pdf.end()
 
