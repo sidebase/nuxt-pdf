@@ -42,7 +42,9 @@ export default defineNuxtConfig({
 })
 ```
 
-That's it! You can now use My Module in your Nuxt app ✨
+That's it! You can now use NuxtPDF in your Nuxt 3 app ✨
+
+Afterwards you can use the [Quick Start documentation](https://sidebase.io/nuxt-pdf/getting-started/quick-start) to explore the features and properly configure your NuxtPDF instance!
 
 ## Development
 
@@ -61,10 +63,6 @@ pnpm run dev:build
 
 # Run ESLint
 pnpm run lint
-
-# Run Vitest
-pnpm run test
-pnpm run test:watch
 
 # Release new version
 pnpm run release
