@@ -31,6 +31,7 @@ export default defineNuxtModule<ModuleOptions>({
     // @ts-expect-error
     nuxt.options.runtimeConfig.public.pdf = options
 
+    // Step 1: Inject Sever side PDFDocument creation
     nuxt.hook('nitro:config', (nitroConfig) => {
       nitroConfig.alias = nitroConfig.alias || {}
 
