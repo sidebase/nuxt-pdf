@@ -2,12 +2,8 @@ import PDFDocument from 'pdfkit'
 import { sendStream, setHeader } from 'h3'
 import type { H3Event } from 'h3'
 import type { WriteStream } from 'node:fs'
-import type { ModuleOptions } from '../types'
-
-type PDFDocumentType<TData> = typeof PDFDocument & {
-  data?: TData
-  footerStartY: number
-}
+import type { ModuleOptions, PDFDocumentType } from '../types'
+import { drawHorizontalLine } from './components/line'
 
 /**
  * Create a blank pdfkit-PDF to be filled with life later on.
@@ -20,6 +16,7 @@ export function createPDF<TData>(options?: PDFKit.PDFDocumentOptions, data?: TDa
   const moduleOptions = useRuntimeConfig().public.pdf as ModuleOptions
   const doc = new PDFDocument(options ?? moduleOptions.defaultDocOptions) as PDFDocumentType<TData>
 
+  // Setup PDF
   if (streamToFile) {
     doc.pipe(streamToFile)
   }
@@ -28,6 +25,9 @@ export function createPDF<TData>(options?: PDFKit.PDFDocumentOptions, data?: TDa
     doc.data = data
   }
   doc.footerStartY = doc.page.height
+
+  // Inject Component functions
+  doc.horizontalLine = (moveDown: number = 1) => drawHorizontalLine(doc, moveDown)
 
   return doc
 }
