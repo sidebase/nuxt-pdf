@@ -1,10 +1,13 @@
 {
   "name": "@sidebase/nuxt-pdf",
-  "version": "0.2.0",
+  "version": "1.0.0",
+  "description": "My new Nuxt module",
+  "repository": "your-org/@sidebase/nuxt-pdf",
   "license": "MIT",
   "type": "module",
   "exports": {
     ".": {
+      "types": "./dist/types.d.ts",
       "import": "./dist/module.mjs",
       "require": "./dist/module.cjs"
     }
@@ -15,27 +18,28 @@
     "dist"
   ],
   "scripts": {
-    "prepack": "nuxt-module-build",
+    "prepack": "nuxt-module-build build",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "lint": "eslint . --max-warnings=0",
-    "types": "tsc --noEmit",
-    "build:module": "nuxi build",
-    "build:playground": "nuxi build playground",
-    "start:playground": "node playground/.output/server/index.mjs"
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0",
-    "defu": "^6.1.4",
-    "pdfkit": "^0.14.0"
+    "@nuxt/kit": "^3.10.1"
   },
   "devDependencies": {
-    "@nuxt/module-builder": "^0.2.1",
-    "@nuxt/schema": "^3.0.0",
-    "@nuxtjs/eslint-config-typescript": "^12.0.0",
-    "@types/pdfkit": "^0.13.3",
-    "eslint": "^8.29.0",
-    "nuxt": "^3.0.0"
+    "@types/node": "^20.11.16",
+    "@nuxt/devtools": "latest",
+    "@nuxt/eslint-config": "^0.2.0",
+    "@nuxt/module-builder": "^0.5.5",
+    "@nuxt/schema": "^3.10.1",
+    "@nuxt/test-utils": "^3.11.0",
+    "changelogen": "^0.5.5",
+    "eslint": "^8.56.0",
+    "nuxt": "^3.10.1",
+    "vitest": "^1.2.2"
   }
 }

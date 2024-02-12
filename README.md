@@ -11,35 +11,63 @@
 
 > `nuxt-pdf` is a easy to use, pdf exporting module to convert Nuxt 3 components into downloadable PDFs.
 
-## Quick Start
-
-```sh
-npm i -D @sidebase/nuxt-pdf
-```
-
-Then visit the [Quick Start documentation](https://sidebase.io/nuxt-pdf/getting-started/quick-start) to setup the module.
-
 ## Features
 
 - Easily export your Nuxt 3 components into PDFs
 - Guides for PDF specific styles
 - Track exporting progress
 
-### Module Playground
+## Quick Setup
 
-This module also has it's own playground:
-```sh
-> git clone https://github.com/sidebase/nuxt-pdf
+1. Add `@sidebase/nuxt-pdf` dependency to your project
 
-> cd nuxt-pdf
+```bash
+# Using pnpm
+pnpm add -D @sidebase/nuxt-pdf
 
-> npm i
+# Using yarn
+yarn add --dev @sidebase/nuxt-pdf
 
-> npm run dev:prepare
+# Using npm
+npm install --save-dev @sidebase/nuxt-pdf
+```
 
-> npm run dev
+2. Add `@sidebase/nuxt-pdf` to the `modules` section of `nuxt.config.ts`
 
-# -> open http://localhost:3000
+```js
+export default defineNuxtConfig({
+  modules: [
+    '@sidebase/nuxt-pdf'
+  ]
+})
+```
+
+That's it! You can now use My Module in your Nuxt app ✨
+
+## Development
+
+```bash
+# Install dependencies
+pnpm install
+
+# Generate type stubs
+pnpm run dev:prepare
+
+# Develop with the playground
+pnpm run dev
+
+# Build the playground
+pnpm run dev:build
+
+# Run ESLint
+pnpm run lint
+
+# Run Vitest
+pnpm run test
+pnpm run test:watch
+
+# Release new version
+pnpm run release
 ```
 
 <!-- Badges -->

@@ -1,8 +1,5 @@
-import { defineNuxtConfig } from 'nuxt/config'
-import nuxtPdf from '..'
-
 export default defineNuxtConfig({
-  modules: [
-    nuxtPdf
-  ]
+  modules: ['../src/module'],
+  myModule: {},
+  devtools: { enabled: true }
 })

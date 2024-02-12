@@ -1,7 +1,5 @@
 <template>
-  <div>
-    Nuxt module playground!
-  </div>
+  <div>basic</div>
 </template>
 
 <script setup>

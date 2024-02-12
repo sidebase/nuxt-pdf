@@ -1,46 +1,19 @@
-import { defineNuxtModule, createResolver, useLogger, addTemplate } from '@nuxt/kit'
-import { defu } from 'defu'
+import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
 
-const PACKAGE_NAME = 'nuxt-pdf'
+// Module options TypeScript interface definition
+export interface ModuleOptions {}
 
-export default defineNuxtModule({
+export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: PACKAGE_NAME,
-    configKey: 'pdf'
+    name: '@sidebase/nuxt-pdf',
+    configKey: 'myModule'
   },
+  // Default configuration options of the Nuxt module
+  defaults: {},
   setup (options, nuxt) {
-    const logger = useLogger(PACKAGE_NAME)
+    const resolver = createResolver(import.meta.url)
 
-    // 1. Create resolver
-    const { resolve } = createResolver(import.meta.url)
-
-    // 2. Add the nitro alias for backend usage
-    nuxt.hook('nitro:config', (nitroConfig) => {
-      nitroConfig.alias = nitroConfig.alias || {}
-
-      // Inline module runtime in Nitro bundle
-      nitroConfig.externals = defu(
-        typeof nitroConfig.externals === 'object' ? nitroConfig.externals : {},
-        {
-          inline: [resolve('./runtime')]
-        }
-      )
-      nitroConfig.alias['#pdf'] = resolve('./runtime/server')
-    })
-
-    // 3. Add types
-    addTemplate({
-      filename: 'types/pdf.d.ts',
-      getContents: () =>
-        [
-          "declare module '#pdf' {",
-          `  const createPDF: typeof import('${resolve(
-            './runtime/server'
-          )}').createPDF`,
-          '}'
-        ].join('\n')
-    })
-
-    logger.success('`nuxt-pdf` setup done')
+    // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
+    addPlugin(resolver.resolve('./runtime/plugin'))
   }
 })
