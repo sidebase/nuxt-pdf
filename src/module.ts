@@ -1,10 +1,20 @@
 import { defineNuxtModule, createResolver } from '@nuxt/kit'
 import { defu } from 'defu'
+import type { ModuleOptions } from './runtime/types'
 
 const PACKAGE_NAME = '@sidebase/nuxt-pdf'
 
 // Module options TypeScript interface definition
-export interface ModuleOptions {}
+const defaultOptions: ModuleOptions = {
+  size: 'A4',
+  bufferPages: true,
+  margins: {
+    top: 25,
+    left: 25,
+    right: 25,
+    bottom: 25,
+  },
+}
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
@@ -12,9 +22,12 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: 'pdf'
   },
   // Default configuration options of the Nuxt module
-  defaults: {},
+  defaults: defaultOptions,
   setup (options, nuxt) {
     const resolver = createResolver(import.meta.url)
+
+    // @ts-expect-error
+    nuxt.options.runtimeConfig.public.pdf = options
 
     nuxt.hook('nitro:config', (nitroConfig) => {
       nitroConfig.alias = nitroConfig.alias || {}
