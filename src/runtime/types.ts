@@ -1,1 +1,3 @@
-export interface ModuleOptions extends PDFKit.PDFDocumentOptions {}
+export interface ModuleOptions {
+  defaultDocOptions: PDFKit.PDFDocumentOptions
+}

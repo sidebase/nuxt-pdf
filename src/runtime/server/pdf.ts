@@ -17,8 +17,8 @@ type PDFDocumentType<TData> = typeof PDFDocument & {
  * @param streamToFile Stream to write PDF to while creating the pdf. In the end this stream can be stored to a file, or streamed to an email server, or ...
  */
 export function createPDF<TData>(options?: PDFKit.PDFDocumentOptions, data?: TData, streamToFile?: WriteStream): PDFDocumentType<TData> {
-  const defaultOptions = useRuntimeConfig().public.pdf as ModuleOptions
-  const doc = new PDFDocument(options ?? defaultOptions) as PDFDocumentType<TData>
+  const moduleOptions = useRuntimeConfig().public.pdf as ModuleOptions
+  const doc = new PDFDocument(options ?? moduleOptions.defaultDocOptions) as PDFDocumentType<TData>
 
   if (streamToFile) {
     doc.pipe(streamToFile)

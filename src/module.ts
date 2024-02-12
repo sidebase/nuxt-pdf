@@ -6,14 +6,16 @@ const PACKAGE_NAME = '@sidebase/nuxt-pdf'
 
 // Module options TypeScript interface definition
 const defaultOptions: ModuleOptions = {
-  size: 'A4',
-  bufferPages: true,
-  margins: {
-    top: 25,
-    left: 25,
-    right: 25,
-    bottom: 25,
-  },
+  defaultDocOptions: {
+    size: 'A4',
+    bufferPages: true,
+    margins: {
+      top: 25,
+      left: 25,
+      right: 25,
+      bottom: 25,
+    },
+  }
 }
 
 export default defineNuxtModule<ModuleOptions>({
