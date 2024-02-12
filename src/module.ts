@@ -1,4 +1,4 @@
-import { defineNuxtModule, addPlugin, createResolver, useLogger } from '@nuxt/kit'
+import { defineNuxtModule, createResolver } from '@nuxt/kit'
 import { defu } from 'defu'
 
 const PACKAGE_NAME = '@sidebase/nuxt-pdf'
@@ -15,6 +15,7 @@ export default defineNuxtModule<ModuleOptions>({
   defaults: {},
   setup (options, nuxt) {
     const resolver = createResolver(import.meta.url)
+
     nuxt.hook('nitro:config', (nitroConfig) => {
       nitroConfig.alias = nitroConfig.alias || {}
 
@@ -27,7 +28,5 @@ export default defineNuxtModule<ModuleOptions>({
       )
       nitroConfig.alias['#pdf'] = resolver.resolve('./runtime/server')
     })
-
-    addPlugin(resolver.resolve('./runtime/plugin'))
   }
 })
