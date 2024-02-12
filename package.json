@@ -26,7 +26,8 @@
     "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.10.1"
+    "@nuxt/kit": "^3.10.1",
+    "pdfkit": "^0.14.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
@@ -34,7 +35,9 @@
     "@nuxt/module-builder": "^0.5.5",
     "@nuxt/schema": "^3.10.1",
     "@types/node": "^20.11.16",
+    "@types/pdfkit": "^0.13.4",
     "changelogen": "^0.5.5",
+    "defu": "^6.1.4",
     "eslint": "^8.56.0",
     "nuxt": "^3.10.1"
   }
