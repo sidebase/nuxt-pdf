@@ -14,6 +14,7 @@
 ## Features
 
 - Easily export your Nuxt 3 components into PDFs
+- Generate PDFs on your server
 - Guides for PDF specific styles
 - Track exporting progress
 
