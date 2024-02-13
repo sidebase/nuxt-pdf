@@ -13,7 +13,7 @@ export default eventHandler(async (event) => {
       }
     },
     footer: {
-      height: 30,
+      height: 14,
       render: (doc) => {
         doc.text('Created with <3 by sidebase')
       }
@@ -23,6 +23,7 @@ export default eventHandler(async (event) => {
   pdf.text('The PDF Module by sidebase!')
   pdf.addPage()
   pdf.text('Its pretty nice.')
+
   await pdf.applyLayout()
   pdf.end()
 

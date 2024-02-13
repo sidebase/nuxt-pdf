@@ -16,5 +16,5 @@ const devToolsClient = defineNuxtModule({
 
 export default defineNuxtConfig({
   modules: ['../src/module', devToolsClient],
-  devtools: { enabled: true }
+  devtools: { enabled: true },
 })

@@ -6,8 +6,8 @@ async function printFooters<T>(doc: PDFDocumentType<T>) {
   const { start, count } = doc.bufferedPageRange()
   for (let c = 0; c < count; c++) {
     doc.switchToPage(start + c)
-    console.log(doc.page.height)
     doc.y = doc.page.height - (doc.layout.footer.height ?? 50)
+
     await Promise.resolve(doc.layout.footer.render(doc))
   }
 }
@@ -18,6 +18,7 @@ async function printHeaders<T>(doc: PDFDocumentType<T>) {
   for (let c = 0; c < count; c++) {
     doc.switchToPage(start + c)
     doc.y = 0
+
     await Promise.resolve(doc.layout.header.render(doc))
   }
 }
