@@ -1,11 +1,13 @@
 import { defineNuxtModule, createResolver } from '@nuxt/kit'
 import { defu } from 'defu'
 import type { ModuleOptions } from './runtime/types'
+import { setupDevToolsUI } from './devtools'
 
 const PACKAGE_NAME = '@sidebase/nuxt-pdf'
 
 // Module options TypeScript interface definition
 const defaultOptions: ModuleOptions = {
+  devtools: false,
   defaultDocOptions: {
     size: 'A4',
     bufferPages: true,
@@ -44,5 +46,9 @@ export default defineNuxtModule<ModuleOptions>({
       )
       nitroConfig.alias['#pdf'] = resolver.resolve('./runtime/server')
     })
+
+    if (options.devtools) {
+      setupDevToolsUI(nuxt, resolver)
+    }
   }
 })

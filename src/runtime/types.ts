@@ -16,6 +16,7 @@ type PDFDocument = typeof PDFDocument & {
 }
 
 export interface ModuleOptions {
+  devtools: boolean
   defaultDocOptions: PDFOptions
 }
 
