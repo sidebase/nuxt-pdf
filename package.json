@@ -18,25 +18,21 @@
     "dist"
   ],
   "scripts": {
-    "prepare": "nuxt-module-build prepare && nuxi prepare playground && nuxi prepare client",
+    "prepare": "nuxt-module-build prepare && nuxi prepare playground",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "npm run build --stub && npm run prepare",
-    "client:build": "nuxi generate client",
-    "client:dev": "nuxi dev client --port 3300",
     "build": "nuxt-module-build build",
-    "prepack": "nuxt-module-build && npm run client:build",
+    "prepack": "nuxt-module-build",
     "release": "npm run lint && npm run prepack && changelogen --release --push && npm publish && git push --follow-tags",
     "lint": "eslint ."
   },
   "dependencies": {
     "@nuxt/devtools-kit": "^1.0.8",
     "@nuxt/kit": "^3.10.1",
-    "@tato30/vue-pdf": "^1.9.4",
     "defu": "^6.1.4",
     "h3": "^1.10.1",
-    "pdfkit": "^0.14.0",
-    "sirv": "^2.0.4"
+    "pdfkit": "^0.14.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
