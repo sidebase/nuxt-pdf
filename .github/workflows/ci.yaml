@@ -15,8 +15,6 @@ jobs:
 
       - name: Use Node.js 16.14.2
         uses: actions/setup-node@v3
-        with:
-          node-version: 16.14.2
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
