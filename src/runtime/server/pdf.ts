@@ -10,11 +10,11 @@ import { applyLayout } from './components/layout'
 
 export interface LayoutOptions {
   header?: {
-    render: <T>(doc: PDFDocumentType<T>) => void
+    render: <T>(doc: PDFDocumentType<T>) => Promise<void> | void
     height: number
   }
   footer?: {
-    render: <T>(doc: PDFDocumentType<T>) => void
+    render: <T>(doc: PDFDocumentType<T>) => Promise<void> | void
     height: number
   }
 }

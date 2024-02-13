@@ -1,10 +1,12 @@
 import { createPDF, streamReturnPDF } from '#pdf'
 
-export default eventHandler((event) => {
+export default eventHandler(async (event) => {
   const pdf = createPDF({info: { Title: 'Welcome to NuxtPDF!'  }}, undefined, {
     header: {
       height: 30,
-      render: (doc) => {
+      render: async (doc) => {
+        // This can be Async or not!
+        await new Promise(resolve => setTimeout(resolve, 500))
         doc.moveDown(1.5)
         doc.text('Welcome to NuxtPDF!')
         doc.horizontalLine(0.5)
@@ -21,7 +23,7 @@ export default eventHandler((event) => {
   pdf.text('The PDF Module by sidebase!')
   pdf.addPage()
   pdf.text('Its pretty nice.')
-  pdf.applyLayout()
+  await pdf.applyLayout()
   pdf.end()
 
   return streamReturnPDF(event, pdf)
