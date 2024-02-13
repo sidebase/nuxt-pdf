@@ -30,6 +30,7 @@
   "dependencies": {
     "@nuxt/devtools-kit": "^1.0.8",
     "@nuxt/kit": "^3.10.1",
+    "@tato30/vue-pdf": "^1.9.4",
     "pdfkit": "^0.14.0",
     "sirv": "^2.0.4"
   },
