@@ -72,4 +72,3 @@ export const streamReturnPDF = async (event: H3Event, pdf: PDFKit.PDFDocument | 
     throw new Error('PDF generated failed.')
   }
 }
-
