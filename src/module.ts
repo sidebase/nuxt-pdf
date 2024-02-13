@@ -1,4 +1,4 @@
-import { defineNuxtModule, createResolver } from '@nuxt/kit'
+import { defineNuxtModule, createResolver, addImportsDir } from '@nuxt/kit'
 import { defu } from 'defu'
 import type { ModuleOptions } from './runtime/types'
 
@@ -44,5 +44,9 @@ export default defineNuxtModule<ModuleOptions>({
       )
       nitroConfig.alias['#pdf'] = resolver.resolve('./runtime/server')
     })
+
+    // Step 2: Inject Client side composables to create pdfs from vue components
+    const composables = resolver.resolve('./runtime/composables')
+    addImportsDir(composables)
   }
 })

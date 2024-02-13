@@ -32,6 +32,7 @@
     "@nuxt/kit": "^3.10.1",
     "defu": "^6.1.4",
     "h3": "^1.10.1",
+    "jspdf": "^2.5.1",
     "pdfkit": "^0.14.0"
   },
   "devDependencies": {

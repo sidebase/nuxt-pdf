@@ -43,6 +43,14 @@
           With Automatic Header and Footer
         </a>
       </li>
+      <li>
+        <a
+          href="/client"
+          target="_blank"
+        >
+          HTML To PDF (Legacy)
+        </a>
+      </li>
     </ul>
   </div>
 </template>
