@@ -13,7 +13,7 @@ export default eventHandler(async (event) => {
       }
     },
     footer: {
-      height: 14,
+      height: 30,
       render: (doc) => {
         doc.text('Created with <3 by sidebase')
       }
