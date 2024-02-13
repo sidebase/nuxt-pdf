@@ -1,33 +1,25 @@
-name: nodejs CI
+name: ci
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
-  test:
+  ci:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js 16.14.2
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - run: corepack enable
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16.14.2
+          node-version: 20
+          cache: "pnpm"
 
-      # Install locked dependencies and prepare types
-      - run: npm ci
-      - run: npm run dev:prepare
-
-      # Check if build and package artifacts can still be generated
-      - run: npm run prepack
-
-      # Check linting and typing
-      - run: npm run lint
-      - run: npm run types
-
-      # Check building
-      - run: npm run build:module
-      - run: npm run build:playground
+      - run: pnpm install && pnpm dev:prepare
+      - run: pnpm lint
+      - run: pnpm build
+      - run: pnpm dev:build

@@ -1,12 +1,7 @@
-import { HTMLOptions, jsPDFOptions } from 'jspdf'
-import { htmlToPdf } from './htmlToPdf'
+import type { HTMLOptions, jsPDFOptions } from 'jspdf'
+import htmlToPDF from './htmlToPDF'
 
-export const exportToPDF = async (
-  fileName: string,
-  element: HTMLElement,
-  documentOptions?: jsPDFOptions,
-  htmlOptions?: HTMLOptions
-) => {
-  const pdf = await htmlToPdf(element, documentOptions, htmlOptions)
+export default async function(fileName: string, element: HTMLElement, documentOptions?: jsPDFOptions, htmlOptions?: HTMLOptions) {
+  const pdf = await htmlToPDF(element, documentOptions, htmlOptions)
   return pdf.save(fileName)
 }

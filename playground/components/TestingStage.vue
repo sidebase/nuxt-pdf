@@ -1,6 +1,14 @@
 <template>
   <div>
-    <h1>nuxt-pdf by <a href="https://sidebase.io" target="_blank">sidebase</a></h1>
+    <h1>
+      nuxt-pdf by
+      <a
+        href="https://sidebase.io"
+        target="_blank"
+      >
+        sidebase
+      </a>
+    </h1>
     <p>
       This demo uses nuxt-pdf to render HTML. <br>
       Instead of using an HTML canvas however, a canvas wrapper using jsPDF is substituted.
@@ -58,7 +66,7 @@
     <div style="font-style: oblique">
       Oblique
     </div>
-    <br />
+    <br>
     <h2>Lists</h2>
     <ul>
       <li>apples</li>

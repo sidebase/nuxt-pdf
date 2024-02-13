@@ -1,10 +1,13 @@
 {
   "name": "@sidebase/nuxt-pdf",
-  "version": "0.1.2",
+  "version": "1.0.0-alpha.0",
+  "description": "A Nuxt 3 module to create Server Side rendered PDFs",
+  "repository": "@sidebase/nuxt-pdf",
   "license": "MIT",
   "type": "module",
   "exports": {
     ".": {
+      "types": "./dist/types.d.ts",
       "import": "./dist/module.mjs",
       "require": "./dist/module.cjs"
     }
@@ -15,25 +18,33 @@
     "dist"
   ],
   "scripts": {
-    "prepack": "nuxt-module-build",
+    "prepare": "nuxt-module-build prepare && nuxi prepare playground",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "lint": "eslint . --max-warnings=0",
-    "types": "tsc --noEmit",
-    "build:module": "nuxi build",
-    "build:playground": "nuxi build playground",
-    "start:playground": "node playground/.output/server/index.mjs"
+    "dev:prepare": "npm run build --stub && npm run prepare",
+    "build": "nuxt-module-build build",
+    "prepack": "nuxt-module-build",
+    "release": "npm run lint && npm run prepack && changelogen --release --push && npm publish && git push --follow-tags",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0",
-    "jspdf": "^2.5.1"
+    "@nuxt/devtools-kit": "^1.0.8",
+    "@nuxt/kit": "^3.10.1",
+    "defu": "^6.1.4",
+    "h3": "^1.10.1",
+    "jspdf": "^2.5.1",
+    "pdfkit": "^0.14.0"
   },
   "devDependencies": {
-    "@nuxt/module-builder": "^0.2.1",
-    "@nuxt/schema": "^3.0.0",
-    "@nuxtjs/eslint-config-typescript": "^12.0.0",
-    "eslint": "^8.29.0",
-    "nuxt": "^3.0.0"
+    "@nuxt/devtools": "latest",
+    "@nuxt/devtools-ui-kit": "^1.0.8",
+    "@nuxt/eslint-config": "^0.2.0",
+    "@nuxt/module-builder": "^0.5.5",
+    "@nuxt/schema": "^3.10.1",
+    "@types/node": "^20.11.16",
+    "@types/pdfkit": "^0.13.4",
+    "changelogen": "^0.5.5",
+    "eslint": "^8.56.0",
+    "nuxt": "^3.10.1"
   }
 }

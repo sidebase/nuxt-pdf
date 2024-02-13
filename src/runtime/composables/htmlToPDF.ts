@@ -1,10 +1,6 @@
-import jsPDF, { HTMLOptions, jsPDFOptions } from 'jspdf'
+import jsPDF, { type HTMLOptions, type jsPDFOptions } from 'jspdf'
 
-export const htmlToPdf = async (
-  element: HTMLElement,
-  documentOptions?: jsPDFOptions,
-  htmlOptions?: HTMLOptions
-) => {
+export default async function(element: HTMLElement, documentOptions?: jsPDFOptions, htmlOptions?: HTMLOptions) {
   if (!(element instanceof HTMLElement)) {
     throw new TypeError('usePDFExport: element is not a HTMLElement.')
   }
