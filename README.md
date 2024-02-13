@@ -65,8 +65,8 @@ pnpm run dev:build
 # Run ESLint
 pnpm run lint
 
-# Release new version
-pnpm run release
+# Publish a new release (bump version before)
+pnpm publish --access public
 ```
 
 <!-- Badges -->
