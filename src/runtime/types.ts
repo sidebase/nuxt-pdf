@@ -1,7 +1,9 @@
 import PDFDocument from 'pdfkit'
 import type { HorizontalLine } from './server/components/line'
+import type { ApplyLayout } from './server/components/layout'
+import type { LayoutOptions } from './server/pdf'
 
-interface PDFOptions extends PDFKit.PDFDocumentOptions {
+export interface PDFOptions extends PDFKit.PDFDocumentOptions {
   margins: {
     left: number
     right: number
@@ -20,11 +22,12 @@ export interface ModuleOptions {
 
 export type PDFDocumentType<TData> = PDFDocument & {
   data?: TData
-  footerStartY: number
+  layout?: LayoutOptions
 
   /**
    * Draw a Horizontal line across the document
    * @param moveDown The amount of lines to move down before and after drawing the line. Default: 1
    */
   horizontalLine: HorizontalLine
+  applyLayout: ApplyLayout
 }
