@@ -33,6 +33,7 @@
     "@nuxt/devtools-kit": "^1.0.8",
     "@nuxt/kit": "^3.10.1",
     "@tato30/vue-pdf": "^1.9.4",
+    "defu": "^6.1.4",
     "h3": "^1.10.1",
     "pdfkit": "^0.14.0",
     "sirv": "^2.0.4"
@@ -46,7 +47,6 @@
     "@types/node": "^20.11.16",
     "@types/pdfkit": "^0.13.4",
     "changelogen": "^0.5.5",
-    "defu": "^6.1.4",
     "eslint": "^8.56.0",
     "nuxt": "^3.10.1"
   }
