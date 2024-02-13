@@ -6,7 +6,7 @@ export default eventHandler(async (event) => {
       height: 30,
       render: async (doc) => {
         // This can be Async or not!
-        await new Promise(resolve => setTimeout(resolve, 500))
+        await new Promise(resolve => setTimeout(resolve, 100))
         doc.moveDown(1.5)
         doc.text('Welcome to NuxtPDF!')
         doc.horizontalLine(0.5)
