@@ -1,8 +1,8 @@
 {
   "name": "@sidebase/nuxt-pdf",
   "version": "1.0.0",
-  "description": "My new Nuxt module",
-  "repository": "your-org/@sidebase/nuxt-pdf",
+  "description": "A Nuxt 3 module to create Server Side rendered PDFs",
+  "repository": "@sidebase/nuxt-pdf",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -33,6 +33,7 @@
     "@nuxt/devtools-kit": "^1.0.8",
     "@nuxt/kit": "^3.10.1",
     "@tato30/vue-pdf": "^1.9.4",
+    "h3": "^1.10.1",
     "pdfkit": "^0.14.0",
     "sirv": "^2.0.4"
   },
