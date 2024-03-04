@@ -2,6 +2,7 @@ import type { PDFDocumentType } from "../../types"
 
 /**
   * Draw a Horizontal line across the document
+  * @param doc The PDF document object
   * @param moveDown The amount of lines to move down before and after drawing the line. Default: 1
 */
 export function drawHorizontalLine<T>(doc: PDFDocumentType<T>, moveDown = 1): void {
