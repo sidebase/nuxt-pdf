@@ -1,4 +1,4 @@
-import type { PDFDocumentType } from "../../types"
+import type { PDFDocumentType } from "../types"
 
 async function printFooters<T>(doc: PDFDocumentType<T>) {
   if (!doc.layout?.footer) return

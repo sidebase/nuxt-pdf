@@ -5,8 +5,7 @@ import type { H3Event } from 'h3'
 import type { WriteStream } from 'node:fs'
 import type { PDFOptions, PDFDocumentType } from '../types'
 
-import { drawHorizontalLine } from './components/line'
-import { applyLayout } from './components/layout'
+import { applyLayout } from './layout'
 
 export interface LayoutOptions {
   header?: {
@@ -42,10 +41,9 @@ export function createPDF<TData>(options?: PDFKit.PDFDocumentOptions, data?: TDa
   const doc = new PDFDocument(formattedOptions) as PDFDocumentType<TData>
   if (streamToFile) { doc.pipe(streamToFile) }
   if (data) { doc.data = data }
-  if (layout) { doc.layout = layout }
 
-  // Inject Component functions
-  doc.horizontalLine = (moveDown: number = 1) => drawHorizontalLine(doc, moveDown)
+  // Layout options
+  if (layout) { doc.layout = layout }
   doc.applyLayout = () => applyLayout(doc)
 
   return doc
