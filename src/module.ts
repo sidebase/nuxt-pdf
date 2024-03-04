@@ -1,4 +1,4 @@
-import { defineNuxtModule, createResolver, addImportsDir } from '@nuxt/kit'
+import { defineNuxtModule, createResolver, addImportsDir, addComponent } from '@nuxt/kit'
 import { defu } from 'defu'
 import type { ModuleOptions } from './runtime/types'
 
@@ -48,5 +48,12 @@ export default defineNuxtModule<ModuleOptions>({
     // Step 2: Inject Client side composables to create pdfs from vue components
     const composables = resolver.resolve('./runtime/composables')
     addImportsDir(composables)
+
+    // Step 3: Inject PDF Components
+    addComponent({
+      name: 'PDFPage',
+      export: 'PDFPage',
+      filePath: resolver.resolve('runtime/components/PDFPage.vue')
+    })
   }
 })
