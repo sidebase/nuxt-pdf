@@ -1,4 +1,4 @@
-import { createPDF, streamReturnPDF, drawHorizontalLine } from '#pdf'
+import { createPDF, streamReturnPDF, drawHorizontalLine, applyLayout } from '#pdf'
 
 export default eventHandler(async (event) => {
   const pdf = createPDF({info: { Title: 'Welcome to NuxtPDF!'  }}, undefined, {
@@ -24,7 +24,7 @@ export default eventHandler(async (event) => {
   pdf.addPage()
   pdf.text('Its pretty nice.')
 
-  await pdf.applyLayout()
+  await applyLayout(pdf)
   pdf.end()
 
   return streamReturnPDF(event, pdf)

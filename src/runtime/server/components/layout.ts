@@ -1,4 +1,4 @@
-import type { PDFDocumentType } from "../types"
+import type { PDFDocumentType } from "../../types"
 
 async function printFooters<T>(doc: PDFDocumentType<T>) {
   if (!doc.layout?.footer) return
@@ -24,10 +24,9 @@ async function printHeaders<T>(doc: PDFDocumentType<T>) {
 }
 
 /**
-  * Applies the Header and Footer designs to every page.
+  * Applies the Header and Footer designs to every page. Requires layout option to be set on PDF initialization
   * @param doc The PDF document object
 */
-export type ApplyLayout = () => Promise<void>
 export async function applyLayout<T>(doc: PDFDocumentType<T>): Promise<void> {
   await printHeaders(doc)
   await printFooters(doc)

@@ -5,8 +5,6 @@ import type { H3Event } from 'h3'
 import type { WriteStream } from 'node:fs'
 import type { PDFOptions, PDFDocumentType } from '../types'
 
-import { applyLayout } from './layout'
-
 export interface LayoutOptions {
   header?: {
     render: <T>(doc: PDFDocumentType<T>) => Promise<void> | void
@@ -39,12 +37,11 @@ export function createPDF<TData>(options?: PDFKit.PDFDocumentOptions, data?: TDa
 
   // Init PDF
   const doc = new PDFDocument(formattedOptions) as PDFDocumentType<TData>
-  if (streamToFile) { doc.pipe(streamToFile) }
-  if (data) { doc.data = data }
 
-  // Layout options
-  if (layout) { doc.layout = layout }
-  doc.applyLayout = () => applyLayout(doc)
+  // Inject futhur PDF data
+  doc.data = data
+  doc.layout = layout
+  if (streamToFile) { doc.pipe(streamToFile) }
 
   return doc
 }

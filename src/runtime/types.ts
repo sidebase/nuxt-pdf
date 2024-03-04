@@ -1,5 +1,4 @@
 import PDFDocument from 'pdfkit'
-import type { ApplyLayout } from './server/layout'
 import type { LayoutOptions } from './server/pdf'
 
 export interface PDFOptions extends PDFKit.PDFDocumentOptions {
@@ -21,5 +20,4 @@ export interface ModuleOptions {
 export type PDFDocumentType<TData> = PDFDocument & {
   data?: TData
   layout?: LayoutOptions
-  applyLayout: ApplyLayout
 }
