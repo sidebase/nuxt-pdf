@@ -1,6 +1,6 @@
 {
   "name": "@sidebase/nuxt-pdf",
-  "version": "0.2.0-alpha.0",
+  "version": "1.0.0-alpha.0",
   "description": "A Nuxt 3 module to create Server Side rendered PDFs",
   "repository": "@sidebase/nuxt-pdf",
   "license": "MIT",
