@@ -23,8 +23,11 @@ async function printHeaders<T>(doc: PDFDocumentType<T>) {
   }
 }
 
-export type ApplyLayout = () => Promise<void>
-export async function applyLayout<T>(doc: PDFDocumentType<T>) {
+/**
+  * Applies the Header and Footer designs to every page. Requires layout option to be set on PDF initialization
+  * @param doc The PDF document object
+*/
+export async function applyLayout<T>(doc: PDFDocumentType<T>): Promise<void> {
   await printHeaders(doc)
   await printFooters(doc)
 }

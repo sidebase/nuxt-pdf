@@ -5,9 +5,6 @@ import type { H3Event } from 'h3'
 import type { WriteStream } from 'node:fs'
 import type { PDFOptions, PDFDocumentType } from '../types'
 
-import { drawHorizontalLine } from './components/line'
-import { applyLayout } from './components/layout'
-
 export interface LayoutOptions {
   header?: {
     render: <T>(doc: PDFDocumentType<T>) => Promise<void> | void
@@ -40,13 +37,11 @@ export function createPDF<TData>(options?: PDFKit.PDFDocumentOptions, data?: TDa
 
   // Init PDF
   const doc = new PDFDocument(formattedOptions) as PDFDocumentType<TData>
-  if (streamToFile) { doc.pipe(streamToFile) }
-  if (data) { doc.data = data }
-  if (layout) { doc.layout = layout }
 
-  // Inject Component functions
-  doc.horizontalLine = (moveDown: number = 1) => drawHorizontalLine(doc, moveDown)
-  doc.applyLayout = () => applyLayout(doc)
+  // Inject futhur PDF data
+  doc.data = data
+  doc.layout = layout
+  if (streamToFile) { doc.pipe(streamToFile) }
 
   return doc
 }
