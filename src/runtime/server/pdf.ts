@@ -1,6 +1,7 @@
 import PDFDocument from 'pdfkit'
 import { sendStream, setHeader } from 'h3'
 import { defu } from 'defu'
+import { useRuntimeConfig } from "#imports";
 import type { H3Event } from 'h3'
 import type { WriteStream } from 'node:fs'
 import type { PDFOptions, PDFDocumentType } from '../types'
