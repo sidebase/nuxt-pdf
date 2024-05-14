@@ -23,14 +23,7 @@
 1. Add `@sidebase/nuxt-pdf` dependency to your project
 
 ```bash
-# Using pnpm
-pnpm add -D @sidebase/nuxt-pdf
-
-# Using yarn
-yarn add --dev @sidebase/nuxt-pdf
-
-# Using npm
-npm install --save-dev @sidebase/nuxt-pdf
+npx nuxi@latest module add nuxt-pdf
 ```
 
 2. Add `@sidebase/nuxt-pdf` to the `modules` section of `nuxt.config.ts`
